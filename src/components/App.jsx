@@ -15,7 +15,8 @@ function App() {
   return (
     <div className="container">
       <h1>{"Hello "+heading}</h1>
-      <input onChange={handelChange} type="text" placeholder="What's your name?" />
+      <input onChange={handelChange} type="text" placeholder="First Name" />
+      <input type="text" placeholder="Last Name"/ > 
       <button style={{ backgroundColor: color}}
       onMouseOver={()=>changeColor(color="black")}
       onMouseOut={()=>changeColor(color="white")}
