@@ -1,6 +1,7 @@
 import React, {
   useState
 } from "react";
+import InputField from "./input.jsx"
 
 function App() {
   let [color, changeColor] = useState("white");
@@ -14,31 +15,13 @@ function App() {
     const name = event.target.name
     const value = event.target.value
     changeDetails(prevValue => {
-      if (name === "fname") {
-        return {
-          fname: value,
-          lname: prevValue.lname,
-          email: prevValue.email
-        }
-      } else if (name === "lname") {
-        return {
-          fname: prevValue.fname,
-          lname: value,
-          email: prevValue.email,
-        }
-      } else if (name === "email") {
-        return {
-          fname: prevValue.fname,
-          lname: prevValue.lname,
-          email: value,
-        }
+      return {
+        ...prevValue,
+        [name]: value,
       }
     })
-
   }
-
-  return ( <
-    div className = "container" >
+  return ( < div className = "container" >
     <
     h1 > {
       "Hello " + details.fname + " " + details.lname
@@ -46,32 +29,27 @@ function App() {
     p > {
       details.email
     } < /p> <
-    input onChange = {
+    InputField OnChange = {
       handelChange
     }
     name = "fname"
-    type = "text"
-    placeholder = "First Name"
-    autoCorrect = "off"
-    autoComplete = "off" / >
+    text = "text"
+    placeholder = "First Name" / >
     <
-    input onChange = {
+    InputField OnChange = {
       handelChange
     }
     name = "lname"
-    type = "text"
-    placeholder = "Last Name"
-    autoCorrect = "off"
-    autoComplete = "off" / >
+    text = "text"
+    placeholder = "Last Name" / >
     <
-    input onChange = {
+    InputField OnChange = {
       handelChange
     }
     name = "email"
-    type = "email"
-    placeholder = "Email"
-    autoCorrect = "off"
-    autoComplete = "off" / >
+    text = "email"
+    placeholder = "Email" / >
+
     <
     button style = {
       {
@@ -83,8 +61,8 @@ function App() {
     }
     onMouseOut = {
       () => changeColor(color = "white")
-    } > Submit < /button> <
-    /div>
+    } > Submit < /button> < /
+    div >
   );
 }
 
